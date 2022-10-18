@@ -20,9 +20,9 @@ export const List = ({cryptos} /* :Crypto[] */) => {
               </View>
               <View style={styles.lineContainer}>
                 <View>
-                  <Text style={styles.name}> ${el.price} </Text>
+                  <Text style={styles.name}> ${(el.price <= 1 && el.price.toFixed(6)) || el.price.toFixed(2)} </Text>
                   <View style={styles.percentContainer}>
-                    {(bull = el.percent > 0 ? true : false)}
+                    {(bull = el.percent > 0)}
                     {/* { bull = el.percent > 0? arrow = require('../Images/ArrowUp.png') : arrow = require('../Images/ArrowDown.png') } */}
                     <Image style={[{width: 15, height: 15}]} source={el.arrow} />
                     <Text
@@ -60,11 +60,12 @@ const styles = StyleSheet.create({
     paddingRight: '7.5%',
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 48,
+    height: 48,
   },
   name: {
-    fontSize: 20,
+    fontSize: 16,
+    fontFamily: 'Inter',
     color: 'black',
     fontWeight: 'bold',
   },

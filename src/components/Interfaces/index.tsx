@@ -6,5 +6,5 @@ export interface Crypto {
     price :number,
     percent :number,
     img :string,
-    arrow :string
+    arrow :string,
 }

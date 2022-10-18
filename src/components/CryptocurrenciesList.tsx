@@ -6,8 +6,8 @@ import {
   Text,
   Platform,
   Image,
-  Button,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import {Crypto} from './Interfaces';
 import {List} from './List';
@@ -46,7 +46,6 @@ export const CryptocurrenciesList = () => {
 
   return (
     <>
-      {/* <SafeAreaView> */}
       <SafeAreaView style={styles.sectionBar}>
         <Text style={styles.sectionText}>CryptoTracker Pro</Text>
         <Image
@@ -56,23 +55,12 @@ export const CryptocurrenciesList = () => {
       </SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <List cryptos={cryptos} />
-        <View style={[{display: 'flex', alignItems: 'center'}]}>
-          <View
-            style={[
-              styles.sectionContainer,
-              {width: '60%', backgroundColor: '#385775', borderRadius: 50},
-            ]}>
-            <Button
-              title="+ Add Cryptocurrency"
-              color="#385775"
-              onPress={() => {
-                AddCrypto();
-              }}
-            />
-          </View>
+        <View style={[styles.sectionContainer, {display: 'flex', alignItems: 'center'}]}>
+          <TouchableOpacity onPress={() => {AddCrypto()}} >
+            <Text style={[{color: 'blue'}]}>+ Add Cryptocurrency</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
-      {/* </SafeAreaView> */}
     </>
   );
 };
@@ -84,14 +72,17 @@ const styles = StyleSheet.create({
   },
   sectionText: {
     fontWeight: 'bold',
-    fontSize: 22.5,
+    fontSize: 20,
+    fontFamily: 'Inter',
+    fontStyle: 'normal',
+    lineHeight: 28,
     color: 'white',
   },
   sectionBar: {
-    paddingTop: Platform.OS === 'ios' ? 75 : 35,
-    paddingBottom: Platform.OS === 'ios' ? 35 : 35,
-    paddingRight: 25,
-    paddingLeft: 22.5,
+    paddingTop: Platform.OS === 'ios' ? 60 : 42,
+    paddingBottom: 42,
+    paddingRight: 24,
+    paddingLeft: 24,
     backgroundColor: '#385775',
     display: 'flex',
     flexDirection: 'row',
@@ -99,8 +90,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   sectionImage: {
-    width: 55,
-    height: 55,
+    width: 48,
+    height: 48,
     borderRadius: 100 / 2,
   },
 });
