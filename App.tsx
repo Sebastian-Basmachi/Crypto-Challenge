@@ -1,12 +1,16 @@
 import React from 'react';
-import {CryptocurrenciesList} from './src/components/CryptocurrenciesList';
+import CryptocurrenciesList from './src/components/cryptocurrenciesList';
 import {SafeAreaView} from 'react-native';
+import {ThemeProvider} from 'styled-components';
+import theme from './src/components/theme/theme';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <CryptocurrenciesList />
-    </SafeAreaView>
+    <ThemeProvider theme={theme}>
+      <SafeAreaView>
+        <CryptocurrenciesList />
+      </SafeAreaView>
+    </ThemeProvider>
   );
 };
 
