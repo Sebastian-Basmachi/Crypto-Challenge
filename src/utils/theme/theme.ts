@@ -3,7 +3,9 @@ const theme = {
     primary: '#385775',
     dark: '#212b36',
     grey: '#56626E',
-    white: "#ffffff",
+    white: '#ffffff',
+    bullish: '#0A8150',
+    bearish: '#DE3617',
   },
   size: {
     large: '20px',

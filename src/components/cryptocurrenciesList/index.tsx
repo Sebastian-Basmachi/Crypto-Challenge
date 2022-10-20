@@ -32,10 +32,6 @@ const CryptocurrenciesList = () => {
 
   const renderItem = ({item}: {item: Crypto}) => <List item={item} />;
 
-  const AddCrypto = () => {
-    // FOR REACT NAVIGATION
-  };
-
   return (
     <>
       <TopBar platform={Platform.OS === 'ios'}>
@@ -48,7 +44,7 @@ const CryptocurrenciesList = () => {
         keyExtractor={item => item.symbol}
       />
       <Container>
-        <TouchableOpacity onPress={AddCrypto()}>
+        <TouchableOpacity >
           <Text primaryC size="16px">
             + Add a Cryptocurrency
           </Text>

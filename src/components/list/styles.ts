@@ -18,7 +18,8 @@ export const TextSymbol = styled.Text`
 
 export const TextPercent = styled.Text`
   textalign: right;
-  color: ${props => (props.positivePercent ? '#0A8150' : '#DE3617')};
+  color: ${props =>
+    props.positivePercent ? theme.colors.bullish : theme.colors.bearish};
   width: auto;
 `;
 
