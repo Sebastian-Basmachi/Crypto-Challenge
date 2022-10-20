@@ -12,7 +12,7 @@ import {
 import ArrowUp from '../../images/icons/ArrowUp.png';
 import ArrowDown from '../../images/icons/ArrowDown.png';
 
-const List: Props = ({item}: {item: Crypto}) => (
+const List = ({item}: {item: Crypto}) => (
   <>
     <Container container>
       <Container containerPaddingLP>
