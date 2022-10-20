@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Crypto, Props} from '../interfaces';
 import {
   TextList,
@@ -12,7 +12,7 @@ import {
 import ArrowUp from '../../images/icons/ArrowUp.png';
 import ArrowDown from '../../images/icons/ArrowDown.png';
 
-const List: FC<Props> = ({item}: {item: Crypto}) => (
+const List: Props = ({item}: {item: Crypto}) => (
   <>
     <Container container>
       <Container containerPaddingLP>
@@ -24,11 +24,7 @@ const List: FC<Props> = ({item}: {item: Crypto}) => (
       </Container>
       <Container center>
         <Container>
-          <TextList>
-            $
-            {(item.price <= 1 && item.price.toFixed(6)) ||
-              item.price.toFixed(2)}
-          </TextList>
+          <TextList>${item.price.toFixed(item.price < 1 ? 6 : 2)}</TextList>
           <Container price>
             <Arrow source={item.percent > 0 ? ArrowUp : ArrowDown} />
             <TextPercent positivePercent={item.percent > 0}>

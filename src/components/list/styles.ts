@@ -67,7 +67,7 @@ export const Container = styled.View`
 `;
 
 export const Line = styled.Text`
-  background-color: rgb(229, 233, 236);
+  background-color: ${theme.colors.greyLine};
   height: 1.5px;
   width: 85%;
 `;

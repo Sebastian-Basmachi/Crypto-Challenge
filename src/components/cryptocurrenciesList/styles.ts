@@ -4,8 +4,7 @@ import theme from '../../utils/theme/theme';
 export const TopBar = styled.SafeAreaView`
   padding-top: ${props => (props.plataform ? '60px' : '42px')};
   padding-bottom: 42px;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding-horizontal: 24px;
   background-color: ${theme.colors.primary};
   display: flex;
   flex-direction: row;

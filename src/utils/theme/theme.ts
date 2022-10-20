@@ -6,6 +6,7 @@ const theme = {
     white: '#ffffff',
     bullish: '#0A8150',
     bearish: '#DE3617',
+    greyLine: 'rgb(229, 233, 236)',
   },
   size: {
     large: '20px',
