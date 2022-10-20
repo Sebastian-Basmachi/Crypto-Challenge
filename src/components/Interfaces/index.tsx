@@ -7,3 +7,7 @@ export interface Crypto {
   percent: number;
   img: string;
 }
+
+export interface Props {
+  cryptos: Crypto[];
+}

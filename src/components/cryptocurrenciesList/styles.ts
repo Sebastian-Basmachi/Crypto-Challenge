@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import theme from '../theme/theme';
+import theme from '../../utils/theme/theme';
 
 export const TopBar = styled.SafeAreaView`
   padding-top: ${props => (props.plataform ? '60px' : '42px')};
@@ -16,7 +16,7 @@ export const TopBar = styled.SafeAreaView`
 
 export const Text = styled.Text`
   font-family: Inter;
-  font-weight: ${props => props.bold || 'normal'};
+  font-weight: ${props => props.weight || 'normal'};
   font-size: ${props => props.size || theme.size.large};
   line-height: 28px;
   color: ${theme.colors.white};

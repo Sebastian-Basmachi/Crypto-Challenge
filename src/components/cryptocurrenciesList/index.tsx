@@ -1,6 +1,6 @@
 import React from 'react';
-import {ScrollView, Platform, TouchableOpacity} from 'react-native';
-import {Crypto} from '../interfaces';
+import {Platform, TouchableOpacity, FlatList} from 'react-native';
+import {Crypto} from '../interfaces/index';
 import List from '../list';
 import {Container, Text, TopBar, ProfilePhoto} from './styles';
 import Profile from '../../images/icons/ProfilePhotograph.png';
@@ -30,6 +30,8 @@ const CryptocurrenciesList = () => {
     },
   ];
 
+  const renderItem = ({item}: {item: Crypto}) => <List item={item} />;
+
   const AddCrypto = () => {
     // FOR REACT NAVIGATION
   };
@@ -37,19 +39,21 @@ const CryptocurrenciesList = () => {
   return (
     <>
       <TopBar platform={Platform.OS === 'ios'}>
-        <Text bold={'bold'}>CryptoTracker Pro</Text>
+        <Text weight="bold">CryptoTracker Pro</Text>
         <ProfilePhoto source={Profile} />
       </TopBar>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <List cryptos={cryptos} />
-        <Container>
-          <TouchableOpacity onPress={AddCrypto()}>
-            <Text primaryC size={'16px'}>
-              + Add a Cryptocurrency
-            </Text>
-          </TouchableOpacity>
-        </Container>
-      </ScrollView>
+      <FlatList
+        data={cryptos}
+        renderItem={renderItem}
+        keyExtractor={item => item.symbol}
+      />
+      <Container>
+        <TouchableOpacity onPress={AddCrypto()}>
+          <Text primaryC size="16px">
+            + Add a Cryptocurrency
+          </Text>
+        </TouchableOpacity>
+      </Container>
     </>
   );
 };

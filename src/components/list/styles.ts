@@ -1,13 +1,19 @@
 import styled from 'styled-components/native';
-import theme from '../theme/theme';
+import theme from '../../utils/theme/theme';
 
 export const TextList = styled.Text`
   font-family: Inter;
-  font-weight: ${props => props.bold || 'normal'};
-  font-size: ${props => props.size || theme.size.medium};
+  font-weight: ${props => props.weight || 'normal'};
+  font-size: ${theme.size.medium};
   color: ${theme.colors.dark};
-  ${props => props.grey && `color: ${theme.colors.grey}`};
-  ${props => props.left && 'padding-left: 4px'}
+`;
+
+export const TextSymbol = styled.Text`
+  font-family: Inter;
+  font-weight: bold;
+  font-size: ${theme.size.small};
+  color: ${theme.colors.grey};
+  padding-left: 4px;
 `;
 
 export const TextPercent = styled.Text`
@@ -23,8 +29,6 @@ export const ProfilePhoto = styled.Image`
 
 export const Container = styled.View`
   ${props => props.paddingLeft && 'padding-left: 8px'}
-  ${props => props.paddingLeftPercent && 'padding-left: 3%'}
-  ${props => props.onlyPadding && 'padding: 24px'}
   ${props =>
     props.container &&
     `  
@@ -33,6 +37,17 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   padding-right: 7.5%;
+  padding: 24px
+  `}
+  ${props =>
+    props.containerPaddingLP &&
+    `  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 7.5%;
+  padding-left: 3%;
   `}
   ${props =>
     props.price &&
