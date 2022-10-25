@@ -1,5 +1,5 @@
 import React from 'react';
-import {Crypto, Props} from '../interfaces';
+import {Crypto} from '../interfaces';
 import {
   TextList,
   Container,
@@ -16,7 +16,9 @@ const List = ({item}: {item: Crypto}) => (
   <>
     <Container container>
       <Container containerPaddingLP>
-        <CryptoLogo source={item.img} />
+        <CryptoLogo
+          source={{uri: `https://messari.io/asset-images/${item.id}/128.png`}}
+        />
         <Container paddingLeft>
           <TextList> {item.name} </TextList>
           <TextSymbol>{item.symbol}</TextSymbol>
@@ -28,7 +30,7 @@ const List = ({item}: {item: Crypto}) => (
           <Container price>
             <Arrow source={item.percent > 0 ? ArrowUp : ArrowDown} />
             <TextPercent positivePercent={item.percent > 0}>
-              {Math.abs(item.percent)}%
+              {Math.abs(item.percent).toFixed(2)}%
             </TextPercent>
           </Container>
         </Container>
