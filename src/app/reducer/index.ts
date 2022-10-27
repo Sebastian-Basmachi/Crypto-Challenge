@@ -1,5 +1,5 @@
 import {Crypto} from '../../components/interfaces';
-import {INFO_API} from '../actions/constants';
+import {INFO} from '../actions/constants';
 
 const initialState = {
   allCryptos: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case INFO_API:
+    case INFO:
       const cryptoModel: Crypto[] = action.payload.map(crypto => ({
         id: crypto.id,
         name: crypto.name,

@@ -5,7 +5,7 @@ import {Crypto} from '../interfaces/index';
 import List from '../list';
 import {Container, Text, TopBar, ProfilePhoto} from './styles';
 import Profile from '../../images/icons/ProfilePhotograph.png';
-import {getInfoApi} from '../../app/actions';
+import {getInfo} from '../../app/actions';
 
 const CryptocurrenciesList = () => {
   const dispatch = useDispatch();
@@ -13,14 +13,14 @@ const CryptocurrenciesList = () => {
   const infoApi = useSelector(state => state.allCryptos);
 
   useEffect(() => {
-    dispatch(getInfoApi());
+    dispatch(getInfo());
   }, [dispatch]);
 
   const cryptoSelected = ['BTC', 'ETH', 'XRP'];
   const cryptos: Crypto[] = [];
   for (let i = 0; i < infoApi.length; i++) {
     for (let j = 0; j < cryptoSelected.length; j++) {
-      if (infoApi[i].symbol === cryptoSelected[j]) cryptos.push(infoApi[i])
+      if (infoApi[i].symbol === cryptoSelected[j]) cryptos.push(infoApi[i]);
     }
   }
 
