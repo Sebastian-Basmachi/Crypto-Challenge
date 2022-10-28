@@ -1,36 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Platform, TouchableOpacity, FlatList} from 'react-native';
 import {Crypto} from '../interfaces/index';
 import List from '../list';
 import {Container, Text, TopBar, ProfilePhoto} from './styles';
 import Profile from '../../images/icons/ProfilePhotograph.png';
+import {getInfo} from '../../app/actions';
 
 const CryptocurrenciesList = () => {
-  const cryptos: Crypto[] = [
-    {
-      name: 'Bitcoin',
-      symbol: 'BTC',
-      price: 19218.36,
-      percent: -0.79,
-      img: require('../../images/cryptoLogo/BTC.png'),
-    },
-    {
-      name: 'Ethereum',
-      symbol: 'ETH',
-      price: 1302.547,
-      percent: 1.2,
-      img: require('../../images/cryptoLogo/ETH.png'),
-    },
-    {
-      name: 'XRP',
-      symbol: 'XRP',
-      price: 0.489701,
-      percent: 0.47,
-      img: require('../../images/cryptoLogo/XRP.png'),
-    },
-  ];
-
+  const dispatch = useDispatch();
   const renderItem = ({item}: {item: Crypto}) => <List item={item} />;
+  const infoApi = useSelector(state => state.allCryptos);
+
+  useEffect(() => {
+    dispatch(getInfo());
+  }, [dispatch]);
+
+  const cryptoSelected = ['BTC', 'ETH', 'XRP'];
+  const cryptos: Crypto[] = [];
+  for (let i = 0; i < infoApi.length; i++) {
+    for (let j = 0; j < cryptoSelected.length; j++) {
+      if (infoApi[i].symbol === cryptoSelected[j]) cryptos.push(infoApi[i]);
+    }
+  }
 
   return (
     <>
@@ -41,10 +33,10 @@ const CryptocurrenciesList = () => {
       <FlatList
         data={cryptos}
         renderItem={renderItem}
-        keyExtractor={item => item.symbol}
+        keyExtractor={item => item.id}
       />
       <Container>
-        <TouchableOpacity >
+        <TouchableOpacity>
           <Text primaryC size="16px">
             + Add a Cryptocurrency
           </Text>

@@ -3,14 +3,13 @@ import theme from '../../utils/theme/theme';
 
 export const TextList = styled.Text`
   font-family: Inter;
-  font-weight: ${props => props.weight || 'normal'};
+  font-weight: bold;
   font-size: ${theme.size.medium};
   color: ${theme.colors.dark};
 `;
 
 export const TextSymbol = styled.Text`
   font-family: Inter;
-  font-weight: bold;
   font-size: ${theme.size.small};
   color: ${theme.colors.grey};
   padding-left: 4px;
