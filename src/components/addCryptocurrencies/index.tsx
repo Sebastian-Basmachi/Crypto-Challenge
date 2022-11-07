@@ -16,7 +16,6 @@ const AddCryptocurrencies = ({navigation}: {navigation: object}) => {
     state => state.cryptocurrenciesOfUser,
   );
   const [inputText, setInputText] = useState('');
-  const backToList = '< Back to list';
 
   useEffect(() => {
     dispatch(getInfo());
@@ -69,8 +68,8 @@ const AddCryptocurrencies = ({navigation}: {navigation: object}) => {
 
   return (
     <>
-      <TouchableOpacity onPress={() => backToInitialScreen()}>
-        <Text backToList>{backToList}</Text>
+      <TouchableOpacity onPress={backToInitialScreen}>
+        <Text backToList>{'< Back to list'}</Text>
       </TouchableOpacity>
       <Container center>
         <Text labelInput>Add a Cryptocurrency</Text>
@@ -78,10 +77,10 @@ const AddCryptocurrencies = ({navigation}: {navigation: object}) => {
           changeColor={inputText}
           placeholder="Use a name or tiker symbol..."
           value={inputText}
-          onChangeText={(text: string) => inputOnChange(text)}
+          onChangeText={inputOnChange}
         />
         <Container button>
-          <Button onPress={() => addCryptocurrency()}>
+          <Button onPress={addCryptocurrency}>
             <TextButton changeColor={inputText}>Add</TextButton>
           </Button>
         </Container>

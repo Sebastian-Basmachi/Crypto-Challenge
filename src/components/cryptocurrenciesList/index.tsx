@@ -16,9 +16,12 @@ const CryptocurrenciesList = ({navigation}: {navigation: object}) => {
   );
 
   useEffect(() => {
+    dispatch(getCryptocurrenciesOfUser());
+  }, [dispatch])
+
+  useEffect(() => {
     setTimeout(() => {
       dispatch(getInfo());
-      dispatch(getCryptocurrenciesOfUser());
     }, 2000);
   });
 
@@ -47,7 +50,7 @@ const CryptocurrenciesList = ({navigation}: {navigation: object}) => {
         keyExtractor={item => item.id}
       />
       <Container>
-        <TouchableOpacity onPress={() => addCryptocurrenciesScreen()}>
+        <TouchableOpacity onPress={addCryptocurrenciesScreen}>
           <Text primaryC size="16px">
             + Add a Cryptocurrency
           </Text>

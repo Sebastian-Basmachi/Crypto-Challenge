@@ -21,10 +21,14 @@ export const getInfo = () => {
 };
 
 export const postCryptocurrencyOfUser = (crypto: string) => {
-  return async function () {
+  return async function (dispatch) {
     try {
       await AsyncStorage.setItem('cryptocurrenciesOfUser', crypto);
-      return;
+
+      return dispatch({
+        type: CRYPTOS_USER,
+        payload: crypto,
+      });
     } catch (error) {
       console.log(error);
     }
